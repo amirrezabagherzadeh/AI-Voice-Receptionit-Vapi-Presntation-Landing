@@ -452,14 +452,14 @@ function App() {
         : "I'm listening, Armando...";
 
   return (
-    <main className="min-h-screen overflow-x-hidden overflow-y-auto bg-[#050403] text-white sm:h-screen sm:overflow-hidden">
+    <main className="min-h-screen overflow-x-hidden overflow-y-auto bg-[#050403] text-white">
       <section
-        className="relative min-h-screen overflow-hidden border-[4px] border-[#b8892e] px-3 py-4 sm:h-screen sm:px-6 sm:py-6 lg:px-10 xl:px-12 2xl:px-16"
+        className="relative min-h-screen overflow-visible border-[4px] border-[#b8892e] px-3 py-4 sm:px-6 sm:py-6 lg:px-10 xl:px-12 2xl:px-16"
         aria-labelledby="hero-title"
       >
         <DubaiEliteBackdrop />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-2rem)] w-full min-w-0 max-w-[1800px] flex-col sm:h-full sm:min-h-0">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-2rem)] w-full min-w-0 max-w-[1800px] flex-col">
           <motion.header
             initial={{ opacity: 0, y: -24 }}
             animate={{ opacity: 1, y: 0 }}
