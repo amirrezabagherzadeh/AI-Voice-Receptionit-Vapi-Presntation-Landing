@@ -397,30 +397,23 @@ function VoiceOrb({ active }) {
   );
 }
 
-function TranscriptStrip({ transcripts, partialTranscript }) {
-  const latestTranscript = partialTranscript || transcripts.at(-1);
+function PromptCopy({ isLive, promptText, transcript }) {
+  if (transcript) {
+    return (
+      <div
+        className="mx-auto max-w-[min(52rem,calc(100vw-4.5rem))] text-white sm:max-w-[min(52rem,calc(100vw-3rem))]"
+        aria-live="polite"
+      >
+        <p className="mb-3 font-mono text-[0.68rem] font-bold uppercase tracking-[0.28em] text-amber-100/62">
+          {transcript.role === "assistant" ? "Agent" : "You"}
+        </p>
+        <p className="text-[clamp(1.22rem,5.4vw,2.35rem)] font-bold leading-tight tracking-[-0.035em] [text-wrap:balance] sm:text-[clamp(1.75rem,3vw,2.55rem)]">
+          {transcript.text}
+        </p>
+      </div>
+    );
+  }
 
-  return (
-    <AnimatePresence mode="wait">
-      {latestTranscript ? (
-        <motion.div
-          key={latestTranscript.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          className="mx-auto mt-8 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-center text-sm leading-6 text-blue-100/80"
-        >
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan-200/70">
-            {latestTranscript.role === "assistant" ? "Agent" : "You"}
-          </span>
-          <span className="ml-3">{latestTranscript.text}</span>
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
-  );
-}
-
-function PromptCopy({ isLive, promptText }) {
   if (isLive) {
     return (
       <p className="mx-auto max-w-[min(50rem,calc(100vw-4.5rem))] text-[clamp(1.05rem,4.9vw,2.05rem)] font-bold leading-tight tracking-[-0.035em] text-white [overflow-wrap:anywhere] [text-wrap:balance] sm:max-w-[min(50rem,calc(100vw-3rem))] sm:text-[clamp(1.55rem,2.65vw,2.05rem)]">
@@ -463,6 +456,8 @@ function App() {
     live: isSpeaking ? "Speaking" : "Listening",
     ended: "Ended",
   }[callStatus];
+
+  const latestTranscript = partialTranscript || transcripts.at(-1);
 
   const promptText = isConnecting
     ? "Connecting to your Vapi agent..."
@@ -537,7 +532,11 @@ function App() {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.28 }}
                     >
-                      <PromptCopy isLive={isLive} promptText={promptText} />
+                      <PromptCopy
+                        isLive={isLive}
+                        promptText={promptText}
+                        transcript={latestTranscript}
+                      />
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -577,11 +576,6 @@ function App() {
                   <span className="h-1 w-1 rounded-full bg-amber-200/70" />
                   <span>{timerStarted ? formatTimer(elapsedSeconds) : "0:00"}</span>
                 </div>
-
-                <TranscriptStrip
-                  transcripts={transcripts}
-                  partialTranscript={partialTranscript}
-                />
 
                 {error ? (
                   <motion.p
