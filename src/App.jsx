@@ -2,9 +2,6 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Vapi from "@vapi-ai/web";
 
-const SUPPORT_MESSAGE =
-  "Welcome to Dubai Elite Investments L.L.C By Al Maktoum. This is your AI voice receptionist. I can help route inquiries about investment opportunities, strategic partnerships, and concierge introductions.";
-
 const BRAND_NAME = "Dubai Elite Investments L.L.C By Al Maktoum";
 const START_PROMPT =
   "Start your call with AI Voice Receptionist of Dubai Elite Investments L.L.C By Al Maktoum";
@@ -26,7 +23,6 @@ function normalizeTranscriptRole(role) {
 
 function useVapiCall() {
   const vapiRef = useRef(null);
-  const greetingSentRef = useRef(false);
   const timerStartedRef = useRef(false);
   const [callStatus, setCallStatus] = useState("idle");
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -84,7 +80,6 @@ function useVapiCall() {
 
       const vapi = new Vapi(publicKey);
       vapiRef.current = vapi;
-      greetingSentRef.current = false;
       timerStartedRef.current = false;
 
       setCallStatus("connecting");
@@ -96,17 +91,6 @@ function useVapiCall() {
 
       vapi.on("call-start", () => {
         setCallStatus("live");
-
-        if (!greetingSentRef.current) {
-          greetingSentRef.current = true;
-
-          // Live Call Control can ask the assistant to say this immediately.
-          // For the most reliable production greeting, also set this as the
-          // assistant's first message/greeting inside the Vapi dashboard.
-          window.setTimeout(() => {
-            vapi.say(`${SUPPORT_MESSAGE}.`, false);
-          }, 350);
-        }
       });
 
       vapi.on("call-end", () => {

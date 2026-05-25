@@ -35,7 +35,7 @@ npm run build
 
 ## Vapi Greeting
 
-The app sends the receptionist greeting with `vapi.say()` after the call starts. For production reliability, also configure the same text as the assistant's first message/greeting in the Vapi dashboard:
+Configure the receptionist introduction as the assistant's first message/greeting in the Vapi dashboard. The frontend does not call `vapi.say()` on start, so the assistant introduces itself from dashboard configuration and then waits for the visitor to speak.
 
 ```text
 Welcome to Dubai Elite Investments L.L.C By Al Maktoum. This is your AI voice receptionist. I can help route inquiries about investment opportunities, strategic partnerships, and concierge introductions.
