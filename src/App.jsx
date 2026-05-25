@@ -454,24 +454,24 @@ function App() {
   return (
     <main className="min-h-screen overflow-x-hidden overflow-y-auto bg-[#050403] text-white sm:h-screen sm:overflow-hidden">
       <section
-        className="relative min-h-screen overflow-hidden border-[4px] border-[#b8892e] px-4 py-5 sm:h-screen sm:px-8 sm:py-6 lg:px-12"
+        className="relative min-h-screen overflow-hidden border-[4px] border-[#b8892e] px-3 py-4 sm:h-screen sm:px-6 sm:py-6 lg:px-10 xl:px-12 2xl:px-16"
         aria-labelledby="hero-title"
       >
         <DubaiEliteBackdrop />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3rem)] w-full min-w-0 max-w-[1600px] flex-col sm:h-full sm:min-h-0">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-2rem)] w-full min-w-0 max-w-[1800px] flex-col sm:h-full sm:min-h-0">
           <motion.header
             initial={{ opacity: 0, y: -24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
-            className="min-w-0 shrink-0 pb-5 pt-5 text-center sm:pb-7 sm:pt-8"
+            className="min-w-0 shrink-0 pb-4 pt-4 text-center sm:pb-6 sm:pt-7 lg:pb-7 lg:pt-8"
           >
             <p className="mb-3 font-mono text-[0.68rem] font-bold uppercase tracking-[0.36em] text-amber-100/65">
               AI Voice Receptionist
             </p>
             <h1
               id="hero-title"
-              className="mx-auto max-w-full font-display text-[clamp(1.95rem,8.1vw,4.8rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-[#fff7e6] drop-shadow-[0_0_34px_rgba(202,138,4,0.2)] lg:max-w-7xl lg:text-[clamp(3.1rem,6.7vw,6.5rem)]"
+              className="mx-auto max-w-[min(92vw,100rem)] font-display text-[clamp(2.05rem,7.2vw,5rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-[#fff7e6] drop-shadow-[0_0_34px_rgba(202,138,4,0.2)] lg:max-w-[96rem] lg:text-[clamp(3.25rem,5.75vw,7.05rem)]"
             >
               Voice AI of
               <span className="block bg-gradient-to-r from-[#fff2c8] via-[#d3a54c] to-[#f7e7b1] bg-clip-text text-transparent">
@@ -488,9 +488,9 @@ function App() {
             initial={{ opacity: 0, y: 32, scale: 0.985 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="relative mx-auto flex min-h-0 w-[calc(100%-1rem)] min-w-0 max-w-[1600px] flex-1 flex-col overflow-hidden rounded-t-[1.7rem] border-2 border-amber-100/76 bg-[#0d0b08]/88 shadow-[0_0_0_1px_rgba(202,138,4,0.25),0_36px_140px_rgba(0,0,0,0.78)] backdrop-blur-xl sm:w-full"
+            className="relative mx-auto flex min-h-0 w-full min-w-0 max-w-[min(100%,1800px)] flex-1 flex-col overflow-hidden rounded-t-[1.7rem] border-2 border-amber-100/76 bg-[#0d0b08]/88 shadow-[0_0_0_1px_rgba(202,138,4,0.25),0_36px_140px_rgba(0,0,0,0.78)] backdrop-blur-xl"
           >
-            <div className="flex h-16 shrink-0 items-center rounded-t-[1.45rem] border-b border-amber-100/12 bg-[#070604]/92 px-7 text-white/90 sm:h-[5.7rem] sm:px-12">
+            <div className="flex h-16 shrink-0 items-center rounded-t-[1.45rem] border-b border-amber-100/12 bg-[#070604]/92 px-6 text-white/90 sm:h-[5.7rem] sm:px-10 lg:px-12">
               <div className="min-w-0 text-left">
                 <p className="font-mono text-[0.62rem] font-bold uppercase tracking-[0.26em] text-amber-100/70">
                   Europe - GCC Bridge
@@ -501,13 +501,13 @@ function App() {
               </div>
             </div>
 
-            <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center px-5 py-8 text-center sm:px-10 sm:py-10 lg:py-12">
+            <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center px-4 py-8 text-center sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-14 xl:py-14">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(163,98,252,0.16),transparent_28%),radial-gradient(circle_at_70%_62%,rgba(202,138,4,0.12),transparent_34%),linear-gradient(180deg,rgba(22,18,12,0.76),rgba(5,5,4,0.95))]" />
 
               <div className="relative z-10 flex w-full flex-col items-center">
                 <VoiceOrb active={isCalling || isSpeaking} />
 
-                <div className="mt-9 min-h-[5.25rem] text-center">
+                <div className="mt-8 min-h-[5.25rem] max-w-[min(72rem,100%)] text-center lg:mt-10">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={promptText}
@@ -525,7 +525,7 @@ function App() {
                   </AnimatePresence>
                 </div>
 
-                <div className="mt-6 flex items-center gap-3 rounded-full border border-amber-100/30 bg-[#15110b]/82 p-3 shadow-[inset_0_0_32px_rgba(255,255,255,0.05),0_16px_60px_rgba(0,0,0,0.36)] backdrop-blur-xl">
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 rounded-full border border-amber-100/30 bg-[#15110b]/82 p-3 shadow-[inset_0_0_32px_rgba(255,255,255,0.05),0_16px_60px_rgba(0,0,0,0.36)] backdrop-blur-xl">
                   <button
                     type="button"
                     onClick={endCall}
