@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Jost:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #070806;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #070806;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes vapi-wave {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+    opacity: 0.52;
+  }
+
+  50% {
+    transform: scaleY(1.18);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.52;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
